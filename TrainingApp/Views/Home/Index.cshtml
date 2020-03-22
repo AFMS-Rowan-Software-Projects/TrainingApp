@@ -1,0 +1,106 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+<div class="page-header">
+    <h1>Training Service</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Categories</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: courses">
+                    <li>
+                        <strong><span data-bind="text: CatName"></span></strong>: <span data-bind="text: CourseName"></span>
+                        <small><a href="#" data-bind="click: $parent.getCourseDetail">Details</a></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+
+    <!-- ko if:detail() -->
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detail</h2>
+            </div>
+            <table class="table">
+                <tr><td>Category</td><td data-bind="text: detail().CatName"></td></tr>
+                <tr><td>Course Name</td><td data-bind="text: detail().CourseName"></td></tr>
+                <tr><td>Course Description</td><td data-bind="text: detail().CourseDesc"></td></tr>
+                <tr><td>Pre-Requirements</td><td data-bind="text: detail().PreReqs"></td></tr>
+                <tr><td>Tuition</td><td data-bind="text: detail().Tuition"></td></tr>
+                <tr><td>Fees</td><td data-bind="text: detail().Fees"></td></tr>
+                <tr><td>Fee Description</td><td data-bind="text: detail().FeeDesc"></td></tr>
+            </table>
+        </div>
+    </div>
+    <!-- /ko -->
+
+    @*<div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Add Course</h2>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" data-bind="submit: addCourse">
+                    <div class="form-group">
+                        <label for="inputCategory" class="col-sm-2 control-label">Category</label>
+                        <div class="col-sm-10">
+                            <select data-bind="options:categories, optionsText: 'CatName', value: newCourse.CategoryId"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="with: newCourse">
+                        <label for="inputCourseName" class="col-sm-2 control-label">Course Name</label><p>&nbsp;</p>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputCourseName" data-bind="value:CourseName" />
+                        </div>
+
+                        <label for="inputCourseDesc" class="col-sm-2  control-label">Course Description</label><p>&nbsp;</p>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" id="inputCourseDesc" data-bind="value:CourseDesc" />
+                        </div>
+
+                        <label for="inputPreReqs" class="col-sm-2 control-label">Pre-Requirements</label><p>&nbsp;</p>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputPreReqs" data-bind="value:PreReqs" />
+                        </div>
+
+                        <label for="inputTuition" class="col-sm-2 control-label">Tuition</label><p>&nbsp;</p>
+                        <div class="col-sm-10">
+                            <input type="text" step="any" class="form-control" id="inputTuition" data-bind="value:Tuition" />
+                        </div>
+
+                        <label for="inputFees" class="col-sm-2 control-label">Fees</label><p>&nbsp;</p>
+                        <div class="col-sm-10">
+                            <input type="text" step="any" class="form-control" id="inputFees" data-bind="value:Fees" />
+                        </div>
+
+                        <label for="inputFeeDesc" class="col-sm-2 control-label">Fee Description</label><p>&nbsp;</p>
+                        <div class="col-sm-10">
+                            <input type="text" step="any" class="form-control" id="inputFeeDesc" data-bind="value:FeeDesc" />
+                        </div>
+
+                        <label for="inputActive" class="col-sm-2 control-label">Active Status</label><p>&nbsp;</p>
+                        <div class="col-sm-10">
+                            <div class="radio">
+                                <label><input type="radio" step="any" id="inputActive" name="ActiveStatus" value="Active" checked required data-bind="value:true"> Active</label>
+                                <label><input type="radio" step="any" id="inputActive" name="ActiveStatus" value="Disabled" data-bind="value:false"> Disabled</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>*@
+</div>
